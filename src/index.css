@@ -1,0 +1,470 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: 'Plastic Love';
+  src: url('src/assets/Digitalt-04no.ttf') format('truetype');
+}
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ed4961;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+.amogh{
+  background-color: #f9f9f9ce;
+}
+body {
+  margin: 0;
+  display: inline-block;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  color: #212529;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #adb5bd;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.navbar{
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  top: 0rem;
+  background-color: transparent;
+  height: 80px;
+  width: 100%;
+  left: 0rem;
+  color: #f8f9fa;
+  font-family: 'Plastic Love';
+}
+
+.bookshelf{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns */
+  gap: 20px;
+  position: absolute;
+  top: 150px;
+  left:50px;
+  flex-direction: column;
+  height: auto;
+  width: 900px;
+}
+
+.bookcard{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #ffcdd4e2;
+  height: 465px;
+  width: 350px;
+  border-radius: 2rem;
+  color: #212529;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.bookcard:hover{
+  transition: all;
+  transform: scale(1.01);
+  animation: ease-in-out;
+  animation-duration: 800ms;
+
+}
+
+.name{
+  font-size: xx-large;
+  font-weight: bold;
+  color: #f8f9fa;
+}
+
+.name-container{
+  position: absolute;
+  display: flex;
+  top: 90px;
+  width: 500px;
+  left: 50px;
+  
+}
+
+h4{
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+h6{
+  font-size: medium;
+}
+
+.bookcard-text{
+  position: relative;
+  display: flex;
+  top: 40px;
+  left: 15px;
+  font-weight: bold;
+  font-size: large;
+}
+.bookcard-text1{
+  background-color: #f4db74;
+  border-radius: 50%;
+  padding: 5px;
+  position: absolute;
+  display: flex;
+  top: 400px;
+  left:285px;
+  font-weight: bold;
+  font-size: large;
+}
+
+
+p{
+  margin: 8px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.cart-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: -100px; 
+  height: 100vh;
+  width: 500px; 
+  z-index: 999;
+  transition: right 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fcfcfcbf;
+  overflow-y: scroll;
+}
+.cart-content {
+  padding: 20px;
+  margin-top: 60px;
+  margin-bottom: 2rem;
+}
+/* Slide-in animation */
+.cart-container.active {
+  right: 0;
+}
+.cart-icon{
+  position: absolute;
+  right: 2rem;
+  top: 1.2rem;
+}
+.amount-btn{
+  position: relative;
+  display: inline;
+  flex-direction:row;
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  margin: 0%;
+  background-color: transparent;
+  color: #1a1a1a;
+}
+.cart-item{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #ed4961;
+  height: 425px;
+  width: 350px;
+  border-radius: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+.cart-img{
+  position: relative;
+  top: 15px;
+  left: 55px;
+  padding: 5px;
+  width: 230px;
+  height: 250px;
+  border-radius: 1rem;
+}
+.title{
+  display: flex;
+  position: absolute;
+  top: 0.5rem;
+  font-size: 57px;
+  left: 42vw;
+  cursor: pointer;
+  font-weight: bold;
+  
+}
+.links{
+  display: flex;
+  position: relative;
+  left: 81vw;
+  top: 1.2rem;
+  margin-right: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.links1{
+  display: flex;
+  position: absolute;
+  left: 88vw;
+  top: 1.5rem;
+  margin-right: 50px;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 700;
+}
+
+.checkout-list-container{
+  position: absolute;
+  color: #1a1a1a;
+  top: 250px;
+  left: 360px;
+  display: flex;
+  width: 800px;
+  flex-direction: column;
+  
+}
+.checkout-list{
+  border: solid 2px #1a1a1a;
+}
+
+.checkout-item{
+  position: relative;
+  display: flex;
+  justify-content: left;
+  width: 800px;
+  flex-direction: row;
+}
+
+.book-info-container-outer{
+  position: absolute;
+  display: flex;
+  width: 1100px;
+  height: 550px;
+  top: 150px;
+  left: 230px;
+  background-color: rgba(252, 215, 215, 0.783);
+  border-radius: 20px;
+}
+.book-info-container{
+  position: relative;
+  top: 25px;
+  left: 25px;
+  width: 1050px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.794);
+  
+  color: #1a1a1a;
+  display: flex;
+  flex-direction:row;
+  border-radius:20px;
+}
+
+.book-info-details{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  top: 30px;
+  left: 40px;
+}
+
+.book-info-image{
+  position: relative;
+  height: auto;
+  top: 30px;
+  left: 20px;
+  height: 450px;
+  width: 350px;
+  border-radius:15px; 
+}
+.book-info-description{
+  position: absolute;
+  top: 120px;
+  width: 600px;
+  height: 400px;
+  text-align: left;
+}
+.qty-btn{
+  position: absolute;
+  bottom: 110px;
+}
+.book-info-price{
+  position: absolute;
+  bottom: 110px;
+  left: 10px;
+  font-size: xx-large;
+  font-weight: bold;
+  
+}
+.book-info-title{
+  position: relative;
+  font-size: 46px;
+  font-weight: 500;
+  left: 7px;
+}
+.book-info-author{
+  position:relative;
+  font-size: x-large;
+  font-weight: 600;
+  left: 7px;
+}
+.login-container{
+  display: flex;
+  flex-direction: column;
+  border: solid 2px #1a1a1a ;
+  width: 500px;
+  height: 410px;
+  color: #fff;
+  background-color: #070202cb;
+  border-radius: 25px;
+}
+.sign-in{
+  position: absolute;
+  display: flex;
+  padding: 20px;
+  font-size: 35px;
+  font-weight: 700;
+}
+.sign-in-1{
+  position: absolute;
+  display: flex;
+  padding: 20px;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.sign-up{
+  position: absolute;
+  display: flex;
+  padding: 20px;
+  font-size: 35px;
+  font-weight: 700;
+}
+.sign-up-1{
+  position: absolute;
+  display: flex;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.sign-in-form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 30px;
+  top: 50px;
+  margin-top: 60px;
+  gap: 15px;
+}
+.login-form-field{
+  position: absolute;
+  display: flex;
+  margin: 10px;
+}
+.login-bg{
+  background-image: url('src/assets/bookstoreimg.jpg');
+}
+.register-bg{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('src/assets/bookstoreimg.jpg');
+}
+.register-container{
+  position: absolute;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  border: solid 2px #1a1a1a ;
+  border-radius: 25px;
+  background-color:#070202cb;
+}
+.register-header{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+.register-form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 30px;
+  top: 80px;
+  margin-top: 50px;
+  gap: 15px;
+}
