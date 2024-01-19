@@ -430,7 +430,7 @@ p{
   margin: 10px;
 }
 .login-bg{
-  background-image: url('src/assets/bookstoreimg.jpg');
+  background-image: url('public/bookstoreimg.jpg');
 }
 .register-bg{
   position: absolute;
