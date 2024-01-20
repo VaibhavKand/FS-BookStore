@@ -430,7 +430,8 @@ p{
   margin: 10px;
 }
 .login-bg{
-  background-image: url('/bookstoreimg.jpg');}
+  background-image: url('/bookstoreimg.jpg');
+}
 
 .register-bg{
   position: absolute;
@@ -441,7 +442,7 @@ p{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Fabstract-blur-beautiful-luxury-shopping-mall-center_1339-4083.jpg&tbnid=08Dqkuc7qXZ2HM&vet=12ahUKEwjfo7CaoeqDAxVIYmwGHWS_AS8QMygaegUIARC1AQ..i&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fbookstore-background&docid=nFNZD3Y-x_91nM&w=626&h=418&q=bookstore%20background&ved=2ahUKEwjfo7CaoeqDAxVIYmwGHWS_AS8QMygaegUIARC1AQ');
+  background-image: url('/bookstoreimg.jpg');
 }
 .register-container{
   position: absolute;
