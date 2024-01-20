@@ -62,7 +62,7 @@ const Login = () => {
   };
 
   return (
-    <div className='login-bg' style={{ width: '1519px', position: 'absolute', left: '0vw', top: '0px', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f7f4f1', padding: '48px 16px', overflowX: 'hidden', overflowY:'hidden' }}>
+    <div className='login-bg' style={{left: '0vw', top: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center',  overflowX: 'hidden', overflowY:'hidden' }}>
       <div style={{  display: 'flex', flexDirection: 'row', gap: '24px', color:'#1a1a1a' }}>
         <div className='login-container'>
         <h1 className='sign-in'>Sign in</h1>

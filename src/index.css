@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Plastic Love';
-  src: url('src/assets/Digitalt-04no.ttf') format('truetype');
+  src: url('/Digitalt-04no.ttf') format('truetype');
 }
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -430,6 +430,11 @@ p{
   margin: 10px;
 }
 .login-bg{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
   background-image: url('/bookstoreimg.jpg');
 }
 
