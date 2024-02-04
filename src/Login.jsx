@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://pmq8hsgk4h.execute-api.ap-south-1.amazonaws.com/test/fs-bs', {
+    fetch('https://nd59tyg671.execute-api.ap-south-1.amazonaws.com/test/sign-in', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,10 +32,11 @@ const Login = () => {
       })
       .then((res) => {
         if (res.statusCode === 200) {
-          console.log(res.body);
+          const { name, email } = JSON.parse(res.body);
+          console.log(name, email);
           dispatch(setAuth());
-          dispatch(setName(res.body.name));
-          dispatch(setMail(res.body.email));
+          dispatch(setName(name));
+          dispatch(setMail(email));
           navigate('/bookstore');
         } else {
           console.log('Failed:', res);

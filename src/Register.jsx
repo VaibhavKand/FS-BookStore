@@ -108,7 +108,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://pmq8hsgk4h.execute-api.ap-south-1.amazonaws.com/test/fs-bs-register', {
+    fetch('https://nd59tyg671.execute-api.ap-south-1.amazonaws.com/test/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

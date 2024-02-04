@@ -18,7 +18,7 @@ const Cart = () => {
     const submitOrder = () =>{
       console.log(cartItems)
       const currorder = {"email":email,"name":name, "items":cartItems,"total":total, "amount":quantity}
-      fetch('https://pmq8hsgk4h.execute-api.ap-south-1.amazonaws.com/test/fs-bs-orderdata', {
+      fetch('https://nd59tyg671.execute-api.ap-south-1.amazonaws.com/test/placeorder', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Cart = () => {
       if(res.statusCode === 400)
       {alert("Could not place Order.");}
       else{
-        
+        console.log(res)
         dispatch(setOrder_id(JSON.parse(res.body)))
         console.log(order_id)
         alert("Order Placed Successfully!");
