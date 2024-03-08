@@ -20,6 +20,8 @@ const Bookinfo = () => {
                 break;
             }
         }
+        console.log(book.img)
+
     },[])
 
     return (
