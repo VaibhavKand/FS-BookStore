@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { resetAuth } from '../Features/authSlice'
 import { useLocation } from 'react-router-dom';
 import { opencart, closecart, clearCart} from '../Features/cartSlice';
-
+import { resetContact, resetImage, resetMail, resetName, resetOrder_id, resetAddress } from '../Features/authSlice';
 import Cart from './Cart'
 const Navbar = () => {
     const navigate = useNavigate()
@@ -12,12 +12,22 @@ const Navbar = () => {
     const {cartOpen} = useSelector((state)=> state.cart)
     const {auth} = useSelector((state)=> state.auth)
     const dispatch = useDispatch()
-
+    
     const isCheckoutRoute = location.pathname === '/checkout';
     const isLoginRoute = location.pathname === '/';
     const isRegisterRoute = location.pathname === '/register';
     const isBookStoreRoute = location.pathname === '/bookstore';
     
+    const handleLogout = () =>{
+      dispatch(resetAddress())
+      dispatch(resetContact())
+      dispatch(resetName())
+      dispatch(resetOrder_id())
+      dispatch(resetAuth())
+      dispatch(resetMail())
+      dispatch(resetImage())
+    }
+
     const handlebackClick = ()=>{
       navigate('/bookstore')
     }

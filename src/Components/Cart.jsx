@@ -9,45 +9,62 @@ const Cart = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {cartItems, total,  quantity, } = useSelector((state)=> state.cart)
-    const {auth, name, email, order_id} = useSelector((state)=> state.auth)
+    const {auth, name, email, order_id, contact, address} = useSelector((state)=> state.auth)
 
     useEffect(()=>{
       dispatch(calculateTotals())
       dispatch(calculateTotalQty())
     },[cartItems])
-    const submitOrder = () =>{
-      console.log(cartItems)
-      const currorder = {"email":email,"name":name, "items":cartItems,"total":total, "amount":quantity}
-      fetch('https://nd59tyg671.execute-api.ap-south-1.amazonaws.com/test/placeorder', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(currorder),
-    }).then((response) => {
-      if (!response.ok) {
-        if (response.status === 440) {
-          alert('Email id already Registered');
-          navigate('/register');
-        }
-        throw new Error('Network response was not ok');
+
+    const submitOrder = () => {
+      if (address && contact) {
+        const currorder = {
+          email: email,
+          name: name,
+          items: cartItems,
+          total: total,
+          amount: quantity,
+          address: address,
+          contact: contact
+        };
+    
+        fetch('https://u60lddpew4.execute-api.ap-south-1.amazonaws.com/production/placeorder', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(currorder),
+        })
+        .then((response) => {
+          if (!response.ok) {
+            if (response.status === 440) {
+              alert('Email id already Registered');
+              navigate('/register');
+            }
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((res) => {
+          if (res.statusCode === 400) {
+            alert("Could not place Order.");
+          } else {
+            console.log(res);
+            dispatch(setOrder_id(JSON.parse(res.body)));
+            console.log(order_id);
+            alert("Order Placed Successfully!");
+            navigate("/checkout");
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('Error placing order. Please try again later.');
+        });
+      } else {
+        alert("Update Address and Contact in Profile");
       }
-      return response.json();
-    })
-    .then((res) => {
-      if(res.statusCode === 400)
-      {alert("Could not place Order.");}
-      else{
-        console.log(res)
-        dispatch(setOrder_id(JSON.parse(res.body)))
-        console.log(order_id)
-        alert("Order Placed Successfully!");
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-    }
+    };
+    
 
     
     return (
@@ -72,7 +89,7 @@ const Cart = () => {
         }
         <div>
         </div>
-        <button style={{position:'absolute',left:'170px',marginBottom:'10px', marginTop:'50px', backgroundColor:'#2563EB', color:'whitesmoke'}} onClick={()=>{if(cartItems.length > 0){submitOrder();navigate("/checkout");}else{alert('Cart is Empty! \n Please add items to your cart!')}}}>Buy</button>
+        <button style={{position:'absolute',left:'170px',marginBottom:'10px', marginTop:'50px', backgroundColor:'#2563EB', color:'whitesmoke'}} onClick={()=>{if(cartItems.length > 0){submitOrder()}else{alert('Cart is Empty! \n Please add items to your cart!')}}}>Buy</button>
       </div>
     </div>
   );

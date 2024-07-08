@@ -4,7 +4,10 @@ const initialState = {
     auth: false,
     name:'',
     email:'',
-    order_id :''
+    order_id :'',
+    image:'https://fs-book-store.s3.ap-south-1.amazonaws.com/IMG-20240308-WA0038.jpg',
+    address:'', 
+    contact:''
 }
 
 const authSlice = createSlice({
@@ -35,8 +38,26 @@ const authSlice = createSlice({
         },
         resetOrder_id: (state, {payload})=>{
             state.order_id = ''
-        }, 
+        },
+        setAddress: (state, {payload})=>{
+            state.address = payload
+        },
+        resetAddress: (state, {payload})=>{
+            state.address = ''
+        },
+        setImage: (state, {payload})=>{
+            state.image = payload
+        },
+        resetImage: (state, {payload})=>{
+            state.image = ''
+        },
+        setContact: (state, {payload})=>{
+            state.contact = payload
+        },
+        resetContact: (state, {payload})=>{
+            state.contact = ''
+        },
     }
 })
-export const {setName, setAuth, resetName, resetAuth, setMail, resetMail, setOrder_id, resetOrder_id} = authSlice.actions
+export const {setName, setAuth, resetName, resetAuth, setMail, resetMail, setOrder_id, resetOrder_id, setAddress, setImage, setContact, resetAddress, resetContact, resetImage} = authSlice.actions
 export default authSlice.reducer

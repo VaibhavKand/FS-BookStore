@@ -96,7 +96,7 @@ button:focus-visible {
   grid-template-columns: repeat(4, 1fr); /* Four columns */
   gap: 20px;
   position: absolute;
-  top: 150px;
+  top: 170px;
   left:50px;
   flex-direction: column;
   height: auto;
@@ -377,7 +377,7 @@ p{
   flex-direction: column;
   border: solid 2px #1a1a1a ;
   width: 500px;
-  height: 410px;
+  height: 500px;
   color: #fff;
   background-color: #070202cb;
   border-radius: 25px;
@@ -453,7 +453,7 @@ p{
 .register-container{
   position: absolute;
   width: 600px;
-  height: 500px;
+  height:600px;
   display: flex;
   flex-direction: column;
   border: solid 2px #1a1a1a ;
@@ -474,4 +474,47 @@ p{
   top: 80px;
   margin-top: 50px;
   gap: 15px;
+}
+.profile-container{
+  height: 100%;
+  width: 100%;
+  left: 0%;
+  top: 0%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px black;
+}
+.profile{
+  top: 50px;
+  font-size: 50px;
+  align-items: center;
+  position: relative;
+  height: 600px;
+  width: 600px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  border: solid 2px black;
+  background-color: #070202cb;
+  border-radius: 25px;
+  font-weight: 900;
+}
+.profile-image{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+.profile-name{
+ font-size: 36px;
+ font-weight: 700;
+}
+.profile-email{
+  font-size: 24px;
+  font-weight: 400;
+}
+.profile-contact{
+  font-size: 24px;
+  font-weight: 400;
 }

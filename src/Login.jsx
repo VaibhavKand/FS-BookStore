@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GoogleLogin } from "@react-oauth/google";
 import { useSelector, useDispatch } from 'react-redux';
-import { setAuth, setName, setMail } from './Features/authSlice';
+import { setAuth, setName, setMail, setAddress, setContact, setImage } from './Features/authSlice';
   
 const Login = () => {
   const navigate = useNavigate();
@@ -14,10 +15,39 @@ const Login = () => {
     checkbox: false,
   });
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const defaultimage = "https://fs-book-store.s3.ap-south-1.amazonaws.com/static_images/user_icon.jpg"
+  const responseMessage = (response) => {
+    const token = response.credential;
+  fetch('https://u60lddpew4.execute-api.ap-south-1.amazonaws.com/production/google-auth-login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ token }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data) {
+        const body = JSON.parse(data.body);
+        console.log(body);
+        dispatch(setAuth());
+        dispatch(setName(body.user_info.Item?body.user_info.Item.name:body.user_info.name));
+        dispatch(setMail(body.user_info.Item?body.user_info.Item.email:body.user_info.email));
+        dispatch(setImage(body.user_info.Item?body.user_info.Item.image:body.user_info.image))
+        dispatch(setContact(body.user_info.Item?body.user_info.Item.contact:formData.contact))
+        dispatch(setAddress(body.user_info.Item?body.user_info.Item.address:formData.address))
+        navigate(body.redirect_url)
+      }
+    })
+    .catch((error) => console.error('Error:', error));
+};
+const errorMessage = (error) => {
+    console.log(error);
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://nd59tyg671.execute-api.ap-south-1.amazonaws.com/test/sign-in', {
+    fetch('https://u60lddpew4.execute-api.ap-south-1.amazonaws.com/production/sign-in', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,11 +62,13 @@ const Login = () => {
       })
       .then((res) => {
         if (res.statusCode === 200) {
-          const { name, email } = JSON.parse(res.body);
-          console.log(name, email);
+          const { name, email, contact, address, image } = JSON.parse(res.body);
           dispatch(setAuth());
           dispatch(setName(name));
           dispatch(setMail(email));
+          dispatch(setImage(image?image:defaultimage))
+          dispatch(setContact(contact))
+          dispatch(setAddress(address))
           navigate('/bookstore');
         } else {
           console.log('Failed:', res);
@@ -152,7 +184,7 @@ const Login = () => {
             </div>
 
             <div style={{ fontSize: '0.875rem' }}>
-              <a href="#" style={{ fontWeight: '500', color: 'whitesmoke', textDecoration: 'none', position:'relative', top:'10px' }}>
+              <a href='/password_reset' style={{ fontWeight: '500', color: 'whitesmoke', textDecoration: 'none', position:'relative', top:'10px' }}>
                 Forgot your password?
               </a>
             </div>
@@ -181,7 +213,10 @@ const Login = () => {
           >
             Sign in
           </button>
-        <a href="/register" style={{ marginTop: '0px' }}>New User? Click here</a>
+          <div style={{display:'flex',justifyContent:'center'}}>
+          <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+          </div>
+        <a href="/register" style={{ marginTop: '10px' }}>New User? Click here</a>
         </form>
         </div>
       </div>

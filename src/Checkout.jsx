@@ -11,7 +11,7 @@ const Checkout = () => {
     
     const getReceipt = (order_id) =>{
       const receipt = {order_id:(order_id)}
-      fetch('https://nd59tyg671.execute-api.ap-south-1.amazonaws.com/test/fetchreceipt', {
+      fetch('https://u60lddpew4.execute-api.ap-south-1.amazonaws.com/production/fetchreceipt', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

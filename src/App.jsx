@@ -6,6 +6,9 @@ import Register from './Register';
 import Login from './Login';
 import Checkout from './Checkout';
 import Bookinfo from './Bookinfo';
+import Profile from './Profile';
+import Password_reset from './Password_reset';
+import New_Password from './New_Password';
 import { useSelector } from 'react-redux';
 function App() {
   const {auth} = useSelector((state)=> state.auth)
@@ -18,6 +21,9 @@ function App() {
       <Route path='/bookstore' element={<Bookshelf/>}/>
       <Route path='/checkout' element={<Checkout/>}/>
       <Route path='/bookinfo/:id' element={<Bookinfo/>}/>
+      <Route path='/profile' element={<Profile/>}/>
+      <Route path='/password_reset' element={<Password_reset/>}/>
+      <Route path='/new_password' element={<New_Password/>}/>
     </Routes>
     </BrowserRouter>
   );
