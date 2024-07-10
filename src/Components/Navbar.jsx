@@ -13,11 +13,11 @@ const Navbar = () => {
     const {auth} = useSelector((state)=> state.auth)
     const dispatch = useDispatch()
     
-    const isCheckoutRoute = location.pathname === '/checkout';
-    const isLoginRoute = location.pathname === '/';
-    const isRegisterRoute = location.pathname === '/register';
-    const isBookStoreRoute = location.pathname === '/bookstore';
-    const isPasswordResetRoute = location.pathname === '/password_reset'
+    const isCheckoutRoute = location.pathname.startsWith('/checkout');
+    const isLoginRoute = location.pathname.startsWith('/');
+    const isRegisterRoute = location.pathname.startsWith('/register');
+    const isBookStoreRoute = location.pathname.startsWith('/bookstore');
+    const isPasswordResetRoute = location.pathname.startsWith('/password_reset')
     const isUpdatePasswordRoute = location.pathname.startsWith ('/new_password/');
     
     const handleLogout = () =>{
