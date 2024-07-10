@@ -14,7 +14,7 @@ const Navbar = () => {
     const dispatch = useDispatch()
     
     const isCheckoutRoute = location.pathname.startsWith('/checkout');
-    const isLoginRoute = location.pathname.startsWith('/');
+    const isLoginRoute = location.pathname === ('/');
     const isRegisterRoute = location.pathname.startsWith('/register');
     const isBookStoreRoute = location.pathname.startsWith('/bookstore');
     const isPasswordResetRoute = location.pathname.startsWith('/password_reset')
