@@ -23,7 +23,7 @@ function App() {
       <Route path='/bookinfo/:id' element={<Bookinfo/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/password_reset' element={<Password_reset/>}/>
-      <Route path='/new_password' element={<New_Password/>}/>
+      <Route path='/new_password/:token' element={<New_Password/>}/>
     </Routes>
     </BrowserRouter>
   );

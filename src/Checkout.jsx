@@ -3,12 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import CheckoutItem from './Components/CheckoutItem'
 import { clearCart,} from './Features/cartSlice'
 import { resetAuth } from './Features/authSlice'
+import { useEffect } from 'react'
 const Checkout = () => {
     const {cartItems, total, totalQty} = useSelector((state)=> state.cart)
-    const {order_id} = useSelector((state)=> state.auth)
+    const {order_id, auth} = useSelector((state)=> state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    
+    useEffect(()=>{
+      if(!auth){
+        navigate('/')
+      }
+    },[])
     const getReceipt = (order_id) =>{
       const receipt = {order_id:(order_id)}
       fetch('https://u60lddpew4.execute-api.ap-south-1.amazonaws.com/production/fetchreceipt', {

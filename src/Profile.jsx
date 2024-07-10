@@ -98,7 +98,7 @@ const Profile = () => {
               onChange={handleChange}
               style={{
                 position: "relative",
-                borderRadius: "0",
+                borderRadius: "15px",
                 display: "block",
                 width: "100%",
                 padding: "8px",
@@ -106,10 +106,12 @@ const Profile = () => {
                 outline: "none",
                 fontSize: "1rem",
                 backgroundColor: "transparent",
+                border:"solid 1px grey",
+                marginBottom:"10px"
               }}
               placeholder={contact ? contact : "Add Contact"}
             />
-            <input
+            <textarea
               id="address"
               name="address"
               type="text"
@@ -118,14 +120,16 @@ const Profile = () => {
               onChange={handleChange}
               style={{
                 position: "relative",
-                borderRadius: "0",
+                borderRadius: "15px",
                 display: "block",
                 width: "100%",
+                height:"150px",
                 padding: "8px",
                 color: "whitesmoke",
                 outline: "none",
                 fontSize: "1rem",
                 backgroundColor: "transparent",
+                border:"solid 1px grey"
               }}
               placeholder={address ? address : "Add Address"}
             />

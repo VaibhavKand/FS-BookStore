@@ -13,9 +13,16 @@ const Password_reset = () => {
             },
             body: JSON.stringify(formData),
           })
-          .then((res) => res.json())
+          .then((res) => res.json() 
+        )
       .then((res) => {
         console.log(res);
+        if (res.statusCode === 200){
+          alert("Password reset sent to email")
+        }
+        if (res.statusCode === 400){
+          alert("No Account with entered email address")
+        }
       })
           .catch((error) => console.error('Error:', error));
 
@@ -28,6 +35,100 @@ const Password_reset = () => {
         }
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+    
+      const styles = {
+        container: {
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          minHeight: "100vh",
+          width: "1519px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "12px",
+        },
+        formContainer: {
+          width: "500px",
+          height: "500px",
+          display: "flex",
+          position: "relative",
+          justifyContent: "left",
+          flexDirection: "column",
+          gap: "1rem",
+          backgroundColor: "#070202cb",
+        },
+        title: {
+          marginTop: "1.5rem",
+          textAlign: "center",
+          fontSize: "2.5rem",
+          fontWeight: "600",
+          color: "whitesmoke",
+          fontFamily: "Poppins, sans-serif",
+        },
+        title_1: {
+          marginTop: "1.5rem",
+          textAlign: "center",
+          fontSize: "1.8rem",
+          fontWeight: "600",
+          color: "whitesmoke",
+          fontFamily: "Poppins, sans-serif",
+        },
+        input: {
+          width: "450px",
+          padding: "0.75rem",
+          borderWidth: "1px",
+          borderColor: "#CBD5E0",
+          borderRadius: "0.375rem",
+          outline: "none",
+          transition: "border-color 0.3s ease",
+          fontFamily: "inherit",
+          fontSize: "0.875rem",
+          "&:focus": {
+            borderColor: "#2563EB",
+          },
+        },
+        errorMessage: {
+          marginTop: "0.25rem",
+          color: "#DC2626",
+          fontSize: "0.875rem",
+        },
+        button: {
+          marginTop: "2rem",
+          position: "relative",
+          left: "680px",
+          width: "10%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0.5rem",
+          fontSize: "1rem",
+          fontWeight: "500",
+          borderRadius: "0.375rem",
+          color: "#fff",
+          backgroundColor: "#2563EB",
+          transition: "background-color 0.3s ease",
+          "&:hover": {
+            backgroundColor: "#34D399",
+          },
+        },
+        link: {
+          position: "relative",
+          top: "20px",
+          left: "0px",
+          fontWeight: "500",
+          color: "whitesmoke",
+          "&:hover": {
+            color: "#34D399",
+          },
+        },
+        footer: {
+          position: "absolute",
+          left: "0px",
+          top: "700px",
+        },
+      };
+  
   return (
     <div className='profile-container'>
         <div className='profile' style={{alignItems:'center', height:'500px', width:'500px'}}>

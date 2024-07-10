@@ -7,13 +7,18 @@ import { data } from './data'
 
 const Bookinfo = () => {
     const {id} = useParams()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [book, setBook] = useState({})
     const {cartItems, cartOpen} = useSelector((state)=> state.cart)
+    const {auth} = useSelector((state)=> state.auth)
     let isPresent = cartItems.some(obj => {
         return obj.id === book.id
   });
     useEffect(()=>{
+        if (!auth){
+            navigate('/')
+          }
         for(let i = 0; i < data.length; i++ ){
             if(String(data[i].id) === id){
                 setBook(data[i])

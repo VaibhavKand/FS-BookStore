@@ -17,6 +17,8 @@ const Navbar = () => {
     const isLoginRoute = location.pathname === '/';
     const isRegisterRoute = location.pathname === '/register';
     const isBookStoreRoute = location.pathname === '/bookstore';
+    const isPasswordResetRoute = location.pathname === '/password_reset'
+    const isUpdatePasswordRoute = location.pathname.startsWith ('/new_password/');
     
     const handleLogout = () =>{
       dispatch(resetAddress())
@@ -26,6 +28,7 @@ const Navbar = () => {
       dispatch(resetAuth())
       dispatch(resetMail())
       dispatch(resetImage())
+      navigate('/')
     }
 
     const handlebackClick = ()=>{
@@ -33,9 +36,9 @@ const Navbar = () => {
     }
   return (
     <>
-    <button style={isCheckoutRoute? {position:'absolute', right:'50px', backgroundColor:'#2563eb', color:'#ffffff'}: {display:'none'}} onClick={()=>navigate('/')}>Logout</button>
-    <div className='navbar' style={isLoginRoute || isCheckoutRoute || isRegisterRoute  ? {display:'none'}: {display:'flex'}}>
-    <button style={isBookStoreRoute || isCheckoutRoute || isLoginRoute || isRegisterRoute ? {display:'none'}: {position:'absolute', left:'0px', top:'20px', backgroundColor:'transparent', border:'none'}} onClick={handlebackClick}>
+    <button style={isCheckoutRoute? {position:'absolute', right:'50px', backgroundColor:'#2563eb', color:'#ffffff'}: {display:'none'}} onClick={handleLogout}>Logout</button>
+    <div className='navbar' style={isLoginRoute || isCheckoutRoute || isRegisterRoute || isPasswordResetRoute || isUpdatePasswordRoute ? {display:'none'}: {display:'flex'}}>
+    <button style={isBookStoreRoute || isCheckoutRoute || isLoginRoute || isRegisterRoute || isPasswordResetRoute || isUpdatePasswordRoute ? {display:'none'}: {position:'absolute', left:'0px', top:'20px', backgroundColor:'transparent', border:'none'}} onClick={handlebackClick}>
     <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="26" width="26" viewBox="0 0 448 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
     </button>
     <div className='title' onClick={()=>{navigate('/bookstore')}}>BookStore</div>
